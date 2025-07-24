@@ -211,7 +211,7 @@ body {
     margin-bottom: 12px;
     text-align: center;
     color: #fff;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    /* No text-shadow override, inherit from desktop */
   }
   .hero__subtitle {
     font-size: 18px;

@@ -3,11 +3,6 @@ body {
   padding: 0;
   background: #01222E;
   font-family: 'Inter', Arial, sans-serif;
-  box-sizing: border-box;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
 }
 
 /* DESKTOP: Side-by-side layout */
@@ -167,61 +162,82 @@ body {
 /* MOBILE: Stacked layout */
 @media (max-width: 900px) {
   .hero {
+    position: relative;
     flex-direction: column;
-    align-items: center;
     min-height: 100vh;
-    width: 100%;
-    height: auto;
+    width: 100vw;
+    height: 100vh;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
   }
   .hero__image-container {
-    width: 100%;
-    height: auto;
-    max-height: 80vh;
-    min-height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    background: #01222E;
+    z-index: 1;
   }
   .hero__image {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    max-height: 80vh;
-    min-height: 0;
-    object-fit: contain;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
     display: block;
     background: #01222E;
   }
   .hero__content {
-    width: 100%;
-    flex: none;
-    padding: 24px 8px 24px 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
+    z-index: 2;
+    padding: 0 16px;
     box-sizing: border-box;
   }
   .hero__title {
     font-size: 32px;
     margin-bottom: 12px;
     text-align: center;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
   }
   .hero__subtitle {
     font-size: 18px;
     margin-bottom: 18px;
     text-align: center;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
   }
   .mg-cta-btn {
     font-size: 18px;
     height: 48px;
     padding: 0 1.2em;
     min-width: 100px;
+    z-index: 3;
+  }
+  /* Optional: add a dark overlay for readability */
+  .hero__image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 2;
+    pointer-events: none;
   }
 }
 
